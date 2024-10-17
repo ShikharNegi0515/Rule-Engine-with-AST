@@ -35,12 +35,14 @@ The evaluate_rule function processes the combined AST and checks if the provided
 ## Data Structure
 The rules are represented as Abstract Syntax Trees (AST) with the following data structure:
 
+```
 class Node:
     def __init__(self, node_type, left=None, right=None, value=None):
         self.type = node_type  # "operator" for AND/OR, "operand" for conditions
         self.left = left  # Left child node
         self.right = right  # Right child node for operators
         self.value = value  # Value for operand nodes (e.g., comparison)
+```
         
 #### Operator Node: Contains logical operators (AND, OR) to combine conditions.
 #### Operand Node: Represents conditions to be checked (e.g., age > 30, salary > 50000).
