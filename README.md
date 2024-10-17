@@ -149,7 +149,7 @@ Database (SQLite/PostgreSQL)
 ├── README.md              # Project documentation
 └── requirements.txt       # List of required dependencies
 ```
-###Test Cases
+## Test Cases
 1. Test Rule Creation:
 
 Input: "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
