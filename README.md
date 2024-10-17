@@ -125,15 +125,15 @@ Database (SQLite/PostgreSQL)
 ### Installation
 1. Clone the repository:
 
-```git clone https://github.com/yourusername/rule-engine-ast.git```
+    ```git clone https://github.com/yourusername/rule-engine-ast.git```
 
 2. Install required dependencies:
 
-```pip install -r requirements.txt```
+    ```pip install -r requirements.txt```
 
 3. Run the application:
 
-```python app.py```
+    ```python app.py```
 
 4. Access the application via localhost:5000.
 
@@ -176,7 +176,7 @@ Support for user-defined functions within rules for advanced conditions.
 Integration with external services to trigger actions based on rule evaluations.
 Extend rules to support more complex data types (e.g., date comparisons, regex).
 
-##License
+## License
 This project is licensed under the MIT License. See LICENSE for more details.
 
 This README provides all the essential information needed to understand, install, and run the application while also giving an overview of the codebase structure and how to contribute or extend the system further.
