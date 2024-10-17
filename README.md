@@ -119,7 +119,7 @@ Database (SQLite/PostgreSQL)
 ### Installation
 1. Clone the repository:
 
-'''git clone https://github.com/yourusername/rule-engine-ast.git'''
+```git clone https://github.com/yourusername/rule-engine-ast.git```
 
 2. Install required dependencies:
 
