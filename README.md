@@ -105,14 +105,14 @@ The rules and metadata are stored in a relational database (e.g., SQLite, Postgr
 ### Tables:
 1. Rules Table: Stores rule strings and corresponding AST.
 
-    Columns:
+    #### Columns:
         id (Primary Key)
         rule_string (Text)
         ast_data (Serialized JSON of the AST)
 
 2. User Data Table: Stores user attributes for evaluation.
 
-    Columns:
+    #### Columns:
         id (Primary Key)
         user_attributes (JSON data of user attributes like age, department, salary, etc.)
 
