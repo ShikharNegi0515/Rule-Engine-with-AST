@@ -55,10 +55,11 @@ Method: POST
 Description: Accepts a rule string and converts it into an AST representation.
 
 Payload Example:
-
+```
 {
   "rule": "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
 }
+```
 Response: AST representation of the rule.
 
 ### 2. Combine Rules
@@ -68,13 +69,14 @@ Method: POST
 Description: Combines multiple rules into a single AST.
 
 Payload Example:
-
+```
 {
   "rules": [
     "((age > 30 AND department = 'Sales'))",
     "((salary > 50000 OR experience > 5))"
   ]
 }
+```
 Response: AST of the combined rule.
 
 ### 3. Evaluate Rule
@@ -84,6 +86,7 @@ Method: POST
 Description: Evaluates the combined rule AST against a user’s data.
 
 Payload Example:
+```
 {
   "data": {
     "age": 35,
@@ -93,6 +96,7 @@ Payload Example:
   },
   "rule_ast": <AST structure from create_rule or combine_rules>
 }
+```
 Response: True or False based on the evaluation.
 
 ## Database Schema
@@ -125,16 +129,17 @@ Database (SQLite/PostgreSQL)
 
 2. Install required dependencies:
 
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 3. Run the application:
 
-python app.py
+```python app.py```
 
 4. Access the application via localhost:5000.
 
 ### Directory Structure
 
+```
 /rule-engine-ast
 │
 ├── /frontend              # Contains UI code (HTML/CSS/JS)
@@ -143,7 +148,7 @@ python app.py
 ├── app.py                 # Main application entry point
 ├── README.md              # Project documentation
 └── requirements.txt       # List of required dependencies
-
+```
 ###Test Cases
 1. Test Rule Creation:
 
