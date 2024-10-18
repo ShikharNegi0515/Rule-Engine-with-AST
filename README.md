@@ -152,20 +152,20 @@ The rules and metadata are stored in a relational database (e.g., SQLite, Postgr
 ## Test Cases
 1. Test Rule Creation:
 
-- Input: "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
-- Output: Correct AST structure representing the rule.
+    - Input: "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
+    - Output: Correct AST structure representing the rule.
 
 2. Test Rule Combination:
 
-- Input: Two rules:
-    - "age > 30 AND department = 'Sales'"
-    - "salary > 50000 OR experience > 5"
-- Output: Combined AST with optimized checks.
+    - Input: Two rules:
+        - "age > 30 AND department = 'Sales'"
+        - "salary > 50000 OR experience > 5"
+    - Output: Combined AST with optimized checks.
 
 3. Test Rule Evaluation:
 
-- Input: JSON user data {"age": 35, "department": "Sales", "salary": 60000, "experience": 3}
-- Output: True
+    - Input: JSON user data {"age": 35, "department": "Sales", "salary": 60000, "experience": 3}
+    - Output: True
 
 ## Bonus Features
 - Error Handling: Ensures proper handling of invalid rule strings or missing data formats.
