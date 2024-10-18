@@ -22,12 +22,12 @@ This is a 3-tier application comprising:
 - A rule is entered as a string (e.g., "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)").
 - The create_rule API processes the string and generates an AST representing the logic.
 
-### 2.Rule Combination:
+### 2. Rule Combination:
 
 - Multiple rules can be combined into one AST using the combine_rules function.
 - Optimizations are applied to minimize redundant checks during rule combination.
 
-### 3.Rule Evaluation:
+### 3. Rule Evaluation:
 
 - User attributes (e.g., age, department, salary) are evaluated against the rules.
 - The evaluate_rule function processes the combined AST and checks if the provided user data satisfies the rule conditions.
