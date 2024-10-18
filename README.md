@@ -2,35 +2,35 @@
 ## Objective
 The goal of this project is to develop a simple 3-tier rule engine application with a UI, API, and Backend Data to determine user eligibility based on attributes like age, department, income, and spend. The application leverages Abstract Syntax Tree (AST) to represent and evaluate rules, allowing dynamic creation, combination, and modification of these rules.
 
-### Features
-Dynamic Rule Creation: Users can define rules using simple logical expressions, which are converted into AST structures.
-Rule Evaluation: The engine evaluates user data against the defined rules to determine eligibility.
-Combine Rules: Multiple rules can be combined into a single AST for efficiency.
-Data Validation: Ensure that the rule evaluation process handles valid data types and conditions.
-Error Handling: Handles invalid rule strings or data formats.
+## Features
+- Dynamic Rule Creation: Users can define rules using simple logical expressions, which are converted into AST structures.
+- Rule Evaluation: The engine evaluates user data against the defined rules to determine eligibility.
+- Combine Rules: Multiple rules can be combined into a single AST for efficiency.
+- Data Validation: Ensure that the rule evaluation process handles valid data types and conditions.
+- Error Handling: Handles invalid rule strings or data formats.
 
 ## Architecture
 This is a 3-tier application comprising:
 
-Frontend (UI): A simple web interface to allow users to input and manage rules.
-API Layer: Handles communication between the frontend and backend for rule creation, combination, and evaluation.
-Backend (Data): Stores rule definitions, user attributes, and AST data in a database for persistence.
+1. Frontend (UI): A simple web interface to allow users to input and manage rules.
+2. API Layer: Handles communication between the frontend and backend for rule creation, combination, and evaluation.
+3. Backend (Data): Stores rule definitions, user attributes, and AST data in a database for persistence.
 
 ## Application Workflow
 ### 1. Rule Creation:
 
-A rule is entered as a string (e.g., "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)").
-The create_rule API processes the string and generates an AST representing the logic.
+- A rule is entered as a string (e.g., "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)").
+- The create_rule API processes the string and generates an AST representing the logic.
 
 ### 2.Rule Combination:
 
-Multiple rules can be combined into one AST using the combine_rules function.
-Optimizations are applied to minimize redundant checks during rule combination.
+- Multiple rules can be combined into one AST using the combine_rules function.
+- Optimizations are applied to minimize redundant checks during rule combination.
 
 ### 3.Rule Evaluation:
 
-User attributes (e.g., age, department, salary) are evaluated against the rules.
-The evaluate_rule function processes the combined AST and checks if the provided user data satisfies the rule conditions.
+- User attributes (e.g., age, department, salary) are evaluated against the rules.
+- The evaluate_rule function processes the combined AST and checks if the provided user data satisfies the rule conditions.
 
 ## Data Structure
 The rules are represented as Abstract Syntax Trees (AST) with the following data structure:
@@ -44,31 +44,31 @@ class Node:
         self.value = value  # Value for operand nodes (e.g., comparison)
 ```
         
-#### Operator Node: Contains logical operators (AND, OR) to combine conditions.
-#### Operand Node: Represents conditions to be checked (e.g., age > 30, salary > 50000).
+- Operator Node: Contains logical operators (AND, OR) to combine conditions.
+- Operand Node: Represents conditions to be checked (e.g., age > 30, salary > 50000).
 
 ## API Endpoints
 ### 1. Create Rule
 
-Endpoint: /create_rule
-Method: POST
-Description: Accepts a rule string and converts it into an AST representation.
+- Endpoint: /create_rule
+- Method: POST
+- Description: Accepts a rule string and converts it into an AST representation.
 
-Payload Example:
+- Payload Example:
 ```
 {
   "rule": "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
 }
 ```
-Response: AST representation of the rule.
+- Response: AST representation of the rule.
 
 ### 2. Combine Rules
 
-Endpoint: /combine_rules
-Method: POST
-Description: Combines multiple rules into a single AST.
+- Endpoint: /combine_rules
+- Method: POST
+- Description: Combines multiple rules into a single AST.
 
-Payload Example:
+- Payload Example:
 ```
 {
   "rules": [
@@ -77,15 +77,15 @@ Payload Example:
   ]
 }
 ```
-Response: AST of the combined rule.
+- Response: AST of the combined rule.
 
 ### 3. Evaluate Rule
 
-Endpoint: /evaluate_rule
-Method: POST
-Description: Evaluates the combined rule AST against a user’s data.
+- Endpoint: /evaluate_rule
+- Method: POST
+- Description: Evaluates the combined rule AST against a user’s data.
 
-Payload Example:
+- Payload Example:
 ```
 {
   "data": {
@@ -97,7 +97,7 @@ Payload Example:
   "rule_ast": <AST structure from create_rule or combine_rules>
 }
 ```
-Response: True or False based on the evaluation.
+- Response: True or False based on the evaluation.
 
 ## Database Schema
 The rules and metadata are stored in a relational database (e.g., SQLite, PostgreSQL). The following is the schema for storing the AST and related data:
@@ -105,22 +105,22 @@ The rules and metadata are stored in a relational database (e.g., SQLite, Postgr
 ### Tables:
 1. Rules Table: Stores rule strings and corresponding AST.
 
-    #### Columns:
-        id (Primary Key)
-        rule_string (Text)
-        ast_data (Serialized JSON of the AST)
+    - Columns:
+          - id (Primary Key)
+          - rule_string (Text)
+          - ast_data (Serialized JSON of the AST)
 
 2. User Data Table: Stores user attributes for evaluation.
 
-    #### Columns:
-        id (Primary Key)
-        user_attributes (JSON data of user attributes like age, department, salary, etc.)
+    - Columns:
+          - id (Primary Key)
+          - user_attributes (JSON data of user attributes like age, department, salary, etc.)
 
 ## Usage Instructions
 ### Prerequisites
-Python 3.x
-Required Python Libraries (Flask, SQLAlchemy, etc.)
-Database (SQLite/PostgreSQL)
+- Python 3.x
+- Required Python Libraries (Flask, SQLAlchemy, etc.)
+- Database (SQLite/PostgreSQL)
 
 ### Installation
 1. Clone the repository:
@@ -152,29 +152,29 @@ Database (SQLite/PostgreSQL)
 ## Test Cases
 1. Test Rule Creation:
 
-Input: "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
-Output: Correct AST structure representing the rule.
+- Input: "((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing')) AND (salary > 50000 OR experience > 5)"
+- Output: Correct AST structure representing the rule.
 
 2. Test Rule Combination:
 
-Input: Two rules:
-"age > 30 AND department = 'Sales'"
-"salary > 50000 OR experience > 5"
-Output: Combined AST with optimized checks.
+- Input: Two rules:
+    - "age > 30 AND department = 'Sales'"
+    - "salary > 50000 OR experience > 5"
+- Output: Combined AST with optimized checks.
 
 3. Test Rule Evaluation:
 
-Input: JSON user data {"age": 35, "department": "Sales", "salary": 60000, "experience": 3}
-Output: True
+- Input: JSON user data {"age": 35, "department": "Sales", "salary": 60000, "experience": 3}
+- Output: True
 
 ## Bonus Features
-Error Handling: Ensures proper handling of invalid rule strings or missing data formats.
-Rule Modification: Allows changing operators, operand values, or sub-expressions dynamically within the AST.
+- Error Handling: Ensures proper handling of invalid rule strings or missing data formats.
+- Rule Modification: Allows changing operators, operand values, or sub-expressions dynamically within the AST.
 
 ## Future Enhancements
-Support for user-defined functions within rules for advanced conditions.
-Integration with external services to trigger actions based on rule evaluations.
-Extend rules to support more complex data types (e.g., date comparisons, regex).
+- Support for user-defined functions within rules for advanced conditions.
+- Integration with external services to trigger actions based on rule evaluations.
+- Extend rules to support more complex data types (e.g., date comparisons, regex).
 
 ## License
 This project is licensed under the MIT License. See LICENSE for more details.
